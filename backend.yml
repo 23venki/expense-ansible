@@ -56,4 +56,4 @@
         name: backend
         state: restarted
         enabled: yes
-        deamon-reload: yes
+        daemon_reload: yes
