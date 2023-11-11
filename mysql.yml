@@ -3,7 +3,7 @@
   become: yes
   tasks:
     - name: Installing mysql
-      ansible.builtin.shell: dnf disable mysql -y
+      ansible.builtin.shell: dnf module disable mysql -y
 
     - name: copy mysql repo name
       ansible.builtin.copy:
