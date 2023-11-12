@@ -18,21 +18,13 @@
   ansible.builtin.user:
     name: expense
 
-- name: Delete app old app dir
-  ansible.builtin.file:
-    name: /app
-    state: absent
-
-- name: Create app dir
-  ansible.builtin.file:
-    name: /app
-    state: directory
-
-- name: Download and extract frontend content
-  ansible.builtin.unarchive:
-    src: https://expense-artifacts.s3.amazonaws.com/backend.zip
-    dest: /app
-    remote_src: yes
+- name: Import common role for app prerequisite
+  ansible.builtin.import_role:
+     name: common
+     tasks_from: app-prereq
+  vars:
+    app_dir: /app
+    component: backend
 
 - name: Download nodejs dependencies
   ansible.builtin.shell: npm install
